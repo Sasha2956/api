@@ -1,12 +1,12 @@
 "use client"
 
-import { UserDTO } from "@/@types/dto/user";
+import { User } from "@prisma/client";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [users, setUsers] = useState<UserDTO[]>();
+  const [users, setUsers] = useState<User[]>();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,7 +14,7 @@ export default function Home() {
     setIsLoading(true);
 
     try {
-      const response = await axios.get<UserDTO[]>(
+      const response = await axios.get<User[]>(
         "https://api-xi-sooty-81.vercel.app/api/users"
       );
 
